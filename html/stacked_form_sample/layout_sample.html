@@ -1,0 +1,268 @@
+<!-- % title "Sample Task Form" % -->
+<!-- 
+icons from http://commons.wikimedia.org/wiki/GNOME_Desktop_icons_2.20
+-->
+<style type="text/css" media="screen">
+  * {
+      margin:0;
+      padding:0;
+  }
+
+  body {
+    background-color: #4B7399;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 14px;
+  }
+
+  .clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+  }
+
+  #container {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
+  }
+  
+/*  some minty green and peach colors? 
+
+  C5E3BF
+  B4D7BF
+  F5FFFA
+  FDE8D7
+  D8F3C9
+*/  
+  .controlset {
+    padding: 4px 6px 4px 6px;
+  }
+  
+  .commands {
+    padding: 0px 0px 3px 10px;
+    margin-bottom: 10px;
+    margin-right: 0px;    
+/*    background-color: #D8F3C9;    */
+    clear: both;    
+    text-align: right;
+  }
+  
+  .button {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-weight: bold;
+    font-size: 100%;
+    border: 1px solid green;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;        
+  }
+  
+  .control {
+    border-left: 2px solid #000000;
+/*    border-bottom: 1px solid #000000;*/
+    padding: 0px 10px 3px 10px;
+    margin-bottom: 10px;    
+    background-color: #D8F3C9;    
+/*    -moz-border-radius: 6px;    */
+    clear: both;
+  }
+
+  .half-container-left {
+    width: 47%;
+    display: block;
+    clear: none;    
+  }
+  
+  .half-container-right {
+    width: 47%;
+    float: right;
+    display: block;    
+  }
+  
+/*  .control {
+    border: 2px solid #000000;
+    background-color: #D8F3C9;
+    width: 100%;
+    padding: 0px 10px 3px 10px;
+    margin-bottom: 10px;
+    margin-left: 6px;
+    margin-right: 6px;
+    display: block;
+    
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    border-radius: 6px;    
+  }
+*/  
+  .control label {
+    font-weight: bold;
+    font-size: 100%;    
+  }
+  
+  .control span {
+    color: #686868;
+    font-size: 80%;
+  }
+  
+  .control input {
+    width: 360px;
+    font-size: 110%;
+  }
+  .control select {
+    width: 360px;
+    font-size: 110%;
+    border: 1px solid #000000;    
+  }
+  
+  textarea {
+    font-family: Verdana,Helvetica,Arial    
+  }
+  
+  textarea.medium {
+    width: 360px;
+    height: 80px;
+  }
+
+  .error {
+/*    background-color: pink;*/
+    background-color: #FFC3CE;
+    background-image:url('images/Gnome-Process-Stop-32.png');    
+/*    background-image:url('/images/icon_actions_stop_22x22.png');*/
+    background-repeat:no-repeat;
+    background-position:95% center;    
+/*    border-bottom: 1px solid red;
+    border-top: 1px solid red;        */
+  }
+  .error input {
+    border: 2px solid red;
+  }
+  .error select {
+    border: 2px solid red;
+  }  
+  
+ .priority-icon {
+   width: 36px;
+   height: 36px;
+   margin-top: 3px;
+   margin-right: 10px;
+   padding: 3px 0px 0px 3px;
+   vertical-align: middle;
+   display: inline-block;
+   border: 1px solid transparent;      
+ } 
+ 
+ .priority-icon.current-priority {
+   background-color: yellow;
+   border: 1px solid red;   
+ }
+ 
+ #priority-display {
+   width: 80px;
+   line-height: 36px;
+/*   background-color: transparent;
+   border: none;
+*/ }
+</style>
+
+<body>
+  <div id="container">
+
+
+<form method="post" action="register.php">
+  <!-- <fieldset style="width:380px"> -->
+    
+  <div class="controlset">
+    <div id="error-explain" style="border: 3px solid red; padding: 5px 5px 5px 5px; margin-bottom: 10px">
+        <img src="images/Gnome-Face-Surprise-48.png" alt="High" />
+        Oh-no! There were errors with your submission, please see below
+    </div>
+      
+    <div class="control">
+      <label for="title">Title:</label> <br />
+      <input type="text" name="title" id="title" style="width: 690px" />  <br />
+      <span>* Required; 150 character limit</span> <br />
+    </div>
+    
+    <div class="control half-container-right">
+      <label for="priority">Priority:</label> <br />
+      
+      <div class="priority-icon">
+        <a href="#" title="High Priority">
+          <img src="images/Gnome-Emblem-Important-32.png" alt="High" style="border: none" />
+        </a>
+      </div>
+      <div class="priority-icon current-priority">
+        <a href="#" title="Normal Priority">        
+          <img src="images/Application-Default-Icon-32.png" alt="Normal" style="border: none" />
+        </a>          
+      </div>        
+      <div class="priority-icon">
+        <a href="#" title="Low Priority">        
+          <img src="images/Gnome-Go-Down-32.png" alt="Low" style="border: none" />        
+        </a>          
+      </div>
+      <div class="priority-icon" id="priority-display">Normal</div>                    
+      
+      <input type="hidden" name="priority" id="priority" value="normal" /> <br />
+      <span>* Click Icon to change the priority</span> <br />
+    </div>    
+        
+    <div class="control error half-container-left">
+      <label for="due_date">Due date:</label> <br />
+      <input type="text" name="due_date" id="due_date" style="width: 110px" /> <br />
+      <span>* Optional; use format YYYY-MM-DD</span> <br />
+    </div>    
+
+    <div class="control error">
+      <label for="status">Status:</label> <br />
+      <select name="status" id="status">
+        <option value="">Please Select</option>
+        <option value="10">Submitted</option>                
+        <option value="1">In Development</option>        
+        <option value="2">Testing</option>                
+        <option value="3">Test Success</option>                
+        <option value="4">Complete</option>                
+      </select> 
+      <br />
+      <span>* Required</span> <br />
+    </div>    
+    
+    <div class="control">
+      <label for="assign_to">Assign To:</label> <br />
+      <select name="assign_to" id="assign_to">
+        <option value="">Please Select</option>
+        <option value="1">Frank Risso</option>        
+        <option value="2">Joe Bob</option>                
+        <option value="3">Steve Jobs</option>                
+        <option value="4">Terrel Owens</option>                
+      </select> 
+      <br />
+      <span>* Required</span> <br />
+    </div>        
+    
+    <div class="control">
+      <label for="comments">Comments:</label> <br />
+      <textarea name="comments" id="comments" class="medium"></textarea>
+      <br />
+      <span>* Required; 1000 character limit</span> <br />
+    </div>        
+    
+    <div class="commands">
+      <a href="#">Cancel and go back</a>
+      <input type="submit" name="commit" value="Submit Changes >>" class="button disable-on-click" />
+    </div>            
+  </div>
+  <!-- </fieldset> -->
+</form>
+
+  </div>
+</body>
