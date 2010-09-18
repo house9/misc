@@ -1,0 +1,175 @@
+<!doctype html>  
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+  <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="../css/style.css?v=1">
+  <link rel="stylesheet" href="../css/vtip.css?v=1">
+  
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=1">  -->
+
+ 
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="../js/modernizr-1.5.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+      <h1>Hire workers</h1>
+    </header>
+    
+    <div id="main">
+      <p>
+        Before you can hire someone you need to create a requisition; select the type of worker(s) you wish to hire
+      </p>
+
+      <!-- TODO: load from json -->
+      <div id="requisition-type-group-container">
+        <div class="requisition-type-group-item-container" title="Click to select"> 
+          <div class="requisition-type-group">
+            Contingent Worker
+            <p>
+              Select Contingent Worker if....          
+            </p>
+          </div>        
+        </div>
+        <div class="requisition-type-group-item-container" title="Click to select">
+          <div class="requisition-type-group">
+            Direct Hire <em></em>
+            <p>
+              Select Direct Hire if....          
+            </p>          
+          </div>        
+        </div> 
+        <div class="requisition-type-group-item-container" title="Click to select">
+          <div class="requisition-type-group">
+            Professional Services <em></em>
+            <p>
+              Select Professional Services if....          
+            </p>          
+          </div>                
+        </div>      
+        
+        <div id="requisition-types" style="display: none;">
+          <ul>
+            <li class="vtip" title="Select this option if x, y and Zed">
+              Sourced by Staffing Supplier            
+            </li>
+            <li class="vtip" title="Select this option if 1, 2 and 3">
+              Giggity            
+            </li>          
+            <li class="vtip" title="Select this option if you want to read a really long tooltip. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.">
+              Giggity 2            
+            </li>                                            
+          </ul>        
+          
+          <p style="text-align:right; padding-right: 6px">
+            <a href="javascript:window.location.reload();">Start Over</a>          
+          </p>
+        </div>        
+          
+      </div>      
+      
+    </div>
+    
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- Javascript at the bottom for fast page loading -->
+ 
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="../js/jquery-1.4.2.min.js"><\/script>')</script>
+
+  <script src="../js/plugins.js?v=1"></script>
+  <script src="../js/script.js?v=1"></script>
+  <script src="../js/vtip-min.js?v=1"></script>
+  
+  <!--[if lt IE 7 ]>
+    <script src="js/dd_belatedpng.js?"></script>
+    <script>
+      DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images
+    </script>
+  <![endif]-->
+
+
+  <!-- yui profiler and profileviewer - remove for production -->
+  <script src="../js/profiling/yahoo-profiling.min.js"></script>
+  <script src="../js/profiling/config.js?v=1"></script>
+  <!-- end profiling code -->
+  
+  
+  <script>
+  $(function() {
+     // RTG hover
+     $('.requisition-type-group').hover( 
+       function(){
+          $(this).parent().css('background-color', '#333');
+          $(this).css('cursor','pointer');          
+       },
+       function(){
+          $(this).parent().css('background-color', '#000');
+          $(this).css('cursor','auto');
+     }); 
+     
+     // RTG click
+     $('.requisition-type-group').click(function () {
+        $(this).css('background-image', 'url(../images/accept.png)');    
+        $(this).parent().css('background-color', '#66CC66');
+        // $('.requisition-type-group').unbind('hover');
+        $('.requisition-type-group').unbind('mouseenter mouseleave');
+        $(this).parent().siblings().hide("slow"); //('display', 'none');
+        
+        $("#requisition-types").show("slow");
+        //$(this).unbind('click');
+        $(this).parent().attr('title', '');
+         
+     });
+     
+     // RT hover
+     $('#requisition-types > ul > li').hover( 
+       function(){
+          $(this).css('cursor','pointer');          
+       },
+       function(){
+          $(this).css('cursor','auto');
+     });
+     
+     // RT click
+     $('#requisition-types > ul > li').click( function () {
+       alert("You selected:" + $(this).text());
+     });                 
+  });  
+  </script>
+  
+</body>
+</html>
